@@ -35,4 +35,9 @@ void Game::Go() {
 
 void Game::UpdateModel() { }
 
-void Game::ComposeFrame() { }
+void Game::ComposeFrame() { 
+	DrawFace(dudeX, dudeY);
+	DrawPoo(poo0X, poo0Y);
+	DrawPoo(poo1X, poo1Y);
+	DrawPoo(poo2X, poo2Y);
+}
