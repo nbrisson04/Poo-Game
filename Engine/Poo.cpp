@@ -16,6 +16,7 @@ Poo::Poo() {
 	vx = vxDist(rng);
 	vy = vyDist(rng);
 }
+
 void Poo::Update() {
 	x += vx;
 	y += vy;
@@ -281,11 +282,15 @@ void Poo::Draw(Graphics& gfx) const {
 void Poo::ProcessConsumption(const Dude& dude) {
 	const int pooRight = x + Poo::width;
 	const int pooBottom = y + Poo::height;
-	const int dudeRight = dude.x + dude.width;
-	const int dudeBottom = dude.y + dude.height;
+	const int dudeRight = dude.GetX() + Dude::GetWidth();
+	const int dudeBottom = dude.GetY() + Dude::GetHeight();
 
-	if (pooRight >= dude.x && x <= dudeRight &&
-		pooBottom >= dude.y && y <= dudeBottom)
+	if (pooRight >= dude.GetX() && x <= dudeRight &&
+		pooBottom >= dude.GetY() && y <= dudeBottom)
 		isEaten = true;
 
+}
+
+bool Poo::IsEaten() const {
+	return isEaten;
 }

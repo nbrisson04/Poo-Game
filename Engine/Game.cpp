@@ -20,21 +20,19 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
-#include <random>
 #include "Poo.h"
 #include "Dude.h"
 
 Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
-	gfx(wnd)
+	gfx(wnd),
+	dude(400, 300),
+	poo0(),
+	poo1(),
+	poo2()
 
-{
-	dude = Dude::Dude(400, 300);
-	poo0 = Poo::Poo();
-	poo1 = Poo::Poo();
-	poo2 = Poo::Poo();
-}
+{}
 
 void Game::Go() {
 	gfx.BeginFrame();
@@ -45,7 +43,7 @@ void Game::Go() {
 
 void Game::UpdateModel() {
 	if (isStarted) {
-		dude.Update(wnd);
+		dude.Update(wnd.kbd);
 
 		poo0.Update();
 		poo1.Update();
@@ -28410,7 +28408,7 @@ void Game::ComposeFrame() {
 	if (!isStarted)
 		DrawTitleScreen(325, 211);
 	else {
-		if (poo0.isEaten && poo1.isEaten && poo2.isEaten)
+		if (poo0.IsEaten() && poo1.IsEaten() && poo2.IsEaten())
 			DrawGameOver(358, 268);
 		dude.Draw(gfx);
 		poo0.Draw(gfx);

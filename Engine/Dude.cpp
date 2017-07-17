@@ -5,14 +5,14 @@ Dude::Dude(int _x, int _y) {
 	x = _x;
 	y = _y;
 }
-void Dude::Update(const MainWindow& wnd) {
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+void Dude::Update(const Keyboard& kbd) {
+	if (kbd.KeyIsPressed(VK_RIGHT))
 		x += 1;
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	if (kbd.KeyIsPressed(VK_LEFT))
 		x -= 1;
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	if (kbd.KeyIsPressed(VK_DOWN))
 		y += 1;
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if (kbd.KeyIsPressed(VK_UP))
 		y -= 1;
 
 	const int right = x + width;
@@ -344,4 +344,18 @@ void Dude::Draw(Graphics& gfx) const {
 	gfx.PutPixel(10 + x, 19 + y, 0, 0, 0);
 	gfx.PutPixel(11 + x, 19 + y, 0, 0, 0);
 	gfx.PutPixel(12 + x, 19 + y, 0, 0, 0);
+}
+
+int Dude::GetX() const {
+	return x;
+}
+int Dude::GetY() const {
+	return y;
+}
+
+int Dude::GetWidth() {
+	return width;
+}
+int Dude::GetHeight() {
+	return height;
 }
