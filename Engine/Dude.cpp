@@ -7,13 +7,13 @@ Dude::Dude(int _x, int _y) {
 }
 void Dude::Update(const Keyboard& kbd) {
 	if (kbd.KeyIsPressed(VK_RIGHT))
-		x += 1;
+		x += speed;
 	if (kbd.KeyIsPressed(VK_LEFT))
-		x -= 1;
+		x -= speed;
 	if (kbd.KeyIsPressed(VK_DOWN))
-		y += 1;
+		y += speed;
 	if (kbd.KeyIsPressed(VK_UP))
-		y -= 1;
+		y -= speed;
 
 	const int right = x + width;
 	if (x < 0)
